@@ -40,7 +40,10 @@ app.post('/addSchool', (req, res) => {
 
   const query = 'INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)';
   db.execute(query, [name, address, latitude, longitude], (err, result) => {
-    if (err) return res.status(500).json({ error: 'Failed to insert into database' });
+    if (err) {
+  console.error("❌ Insert Error:", err.message);
+  return res.status(500).json({ error: err.message });
+}
     res.status(201).json({ message: 'School added successfully' });
   });
 });
@@ -69,7 +72,10 @@ app.get('/listSchools', (req, res) => {
   `;
 
   db.query(query, [userLat, userLat, userLong], (err, results) => {
-    if (err) return res.status(500).json({ error: 'Failed to fetch schools' });
+    if (err) {
+  console.error("❌ Failed to fetch schools", err.message);
+  return res.status(500).json({ error: err.message });
+}
     res.json(results);
   });
 });
