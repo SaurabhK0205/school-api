@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 
 // to establish connection with database
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', 
-  password: 'Saurabh', 
-  database: 'Education'
+  host: 'sql12.freesqldatabase.com',
+  user: 'sql12785315', 
+  password: 'M8LSWBd72M', 
+  database: 'sql12785315'
 });
 
 db.connect((err) => {
