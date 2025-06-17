@@ -56,6 +56,7 @@ app.get('/listSchools', (req, res) => {
     return res.status(400).json({ error: 'Latitude and longitude are required' });
   }
 
+  //to calculate and sort schools nearest to the user's provided longitude and latitude coordinates.
   const query = `
     SELECT *,
       6371 * 2 * ASIN(SQRT(
